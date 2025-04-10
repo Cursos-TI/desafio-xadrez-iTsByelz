@@ -3,6 +3,7 @@
 
 int main() {
     int i;
+    int movimentoCompleto = 1;
     
        //Mover a Torre 5 casas para a direita    
                                                                             
@@ -25,6 +26,18 @@ int main() {
            i++;
        } while (i < 8);
    
+
+       while (movimentoCompleto--)
+       {
+        for (int i = 0; i < 2; i++){
+            printf("Cavalo: Cima\n");
+        }
+        
+        printf("Cavalo: Direita\n");
+
+       }
+       
+
        return 0;
    }
        
