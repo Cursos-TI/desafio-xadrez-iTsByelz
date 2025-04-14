@@ -1,43 +1,67 @@
 #include <stdio.h>
 
+void moverTorre(int casas){ // void para a torre
+    if(casas > 0){
+        printf("Torre: Direita\n");
+        moverTorre(casas - 1);
+    }
+
+}
+
+void moverBispo(int movimentosRestantes) {
+    if (movimentosRestantes > 0) {
+        printf("Movimento do Bispo (%d):\n", movimentosRestantes);
+
+        for (int v = 0; v < 1; v++) { // movimento vertical (1 vez para representar "Cima")
+            printf("  Bispo: Cima\n");
+
+            for (int h = 0; h < 1; h++) { // movimento horizontal (1 vez para representar "Direita")
+                printf("    Bispo: Direita\n");
+            }
+        }
+
+        moverBispo(movimentosRestantes - 1); // chamada recursiva
+    }
+}
+
+
+void moverRainha(int casas){ // void para a Rainha 
+    if(casas > 0){
+        printf("Rainha: Esquerda\n");
+        moverRainha(casas - 1);
+    }
+
+}
+
+
 
 int main() {
-    int i;
-    int movimentoCompleto = 1;
-    
-       //Mover a Torre 5 casas para a direita    
-                                                                            
-       for (int i = 0; i < 5; i++)
-       {
-       printf("Torre: Direita\n");
-       }
+    moverTorre(5);
+    moverBispo(5);
+    moverRainha(8);
 
-        //Mover o Bispo 5 casas para a diagonal    
-       i = 0; // reinicializa i para o while
-       while (i < 5) {
-           printf("Bispo: Cima,Direita \n");
-           i++;
-       }
+    // Movimento complexo do Cavalo em "L"
+    int movimentos = 5;
 
-       //Mover a Rainha 8 casas para a esquerda    
-       i = 0; // reinicializa i para o do...while
-       do {
-           printf("Rainha: Esquerda\n");
-           i++;
-       } while (i < 8);
-   
+    for (int i = 0; i < movimentos; i++) {
+        printf("Movimento %d do Cavalo:\n", i + 1);
 
-       while (movimentoCompleto--)
-       {
-        for (int i = 0; i < 2; i++){
-            printf("Cavalo: Cima\n");
+        for (int j = 0; j < 3; j++) {
+            if (j < 2) {
+                printf("  Cavalo: Cima\n"); // duas casas para cima
+            } else {
+                if (i == 3) {
+                    printf("  Cavalo: Pulando movimento (continue)\n");
+                    continue; // exemplo de uso do continue
+                }
+                printf("  Cavalo: Direita\n"); // uma casa para a direita
+            }
         }
-        
-        printf("Cavalo: Direita\n");
 
-       }
-       
-
+        if (i == 4) {
+            break; // exemplo de uso do break
+        }
+    }
        return 0;
    }
        
